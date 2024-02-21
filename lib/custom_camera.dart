@@ -123,15 +123,6 @@ class _CustomCameraLayoutState extends State<CustomCameraLayout>
                                     width: 80,
                                     height: 80,
                                   ))),
-                      // CustomOutlinedButton(
-                      //   text: "AMBIL FOTO",
-                      //   textColor: primaryColor,
-                      //   color: primaryColor,
-                      //   width: double.infinity,
-                      //   onPressed: () {
-                      //     _captureImage();
-                      //   },
-                      // ),
                       imagePath == null
                           ? Container()
                           : Padding(
