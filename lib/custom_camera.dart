@@ -33,41 +33,8 @@ class _CustomCameraLayoutState extends State<CustomCameraLayout>
   @override
   void initState() {
     getCameras();
-    // _getStoragePermission();
     super.initState();
   }
-
-  // bool permissionGranted = false;
-
-  // Future<void> _getStoragePermission() async {
-  //   DeviceInfoPlugin plugin = DeviceInfoPlugin();
-  //   AndroidDeviceInfo android = await plugin.androidInfo;
-  //   if (android.version.sdkInt < 33) {
-  //     if (await Permission.storage.request().isGranted) {
-  //       setState(() {
-  //         permissionGranted = true;
-  //       });
-  //     } else if (await Permission.storage.request().isPermanentlyDenied) {
-  //       await openAppSettings();
-  //     } else if (await Permission.audio.request().isDenied) {
-  //       setState(() {
-  //         permissionGranted = false;
-  //       });
-  //     }
-  //   } else {
-  //     if (await Permission.photos.request().isGranted) {
-  //       setState(() {
-  //         permissionGranted = true;
-  //       });
-  //     } else if (await Permission.photos.request().isPermanentlyDenied) {
-  //       await openAppSettings();
-  //     } else if (await Permission.photos.request().isDenied) {
-  //       setState(() {
-  //         permissionGranted = false;
-  //       });
-  //     }
-  //   }
-  // }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
