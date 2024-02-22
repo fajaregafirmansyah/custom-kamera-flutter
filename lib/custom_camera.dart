@@ -290,7 +290,11 @@ class _CustomCameraLayoutState extends State<CustomCameraLayout>
 
   void onCameraSelected(CameraDescription cameraDescription) async {
     if (controller != null) await controller?.dispose();
-    controller = CameraController(cameraDescription, ResolutionPreset.medium);
+    //old
+    // controller = CameraController(cameraDescription, ResolutionPreset.medium);
+
+    //new
+    controller = CameraController(cameraDescription, ResolutionPreset.high);
 
     controller?.addListener(() {
       if (mounted) setState(() {});
