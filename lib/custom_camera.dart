@@ -19,7 +19,7 @@ class CustomCameraLayout extends StatefulWidget {
 
 class _CustomCameraLayoutState extends State<CustomCameraLayout>
     with WidgetsBindingObserver {
-  bool isSwitched = false;
+  Offset? _tapPosition;
 
   String code = "";
   String info = "";
@@ -155,6 +155,17 @@ class _CustomCameraLayoutState extends State<CustomCameraLayout>
                               ),
                             ),
                     ])),
+              ),
+              GestureDetector(
+                onTapDown: (details) {
+                  _tapPosition = details.globalPosition;
+                  _handleFocus();
+                },
+                child: Container(
+                  width: double.infinity,
+                  height: 520,
+                  color: Colors.transparent,
+                ),
               ),
             ],
           ),
@@ -372,6 +383,24 @@ class _CustomCameraLayoutState extends State<CustomCameraLayout>
 
   void logError(String code, String message) =>
       print('Error: $code\nMessage: $message');
+
+  void _handleFocus() {
+    if (_tapPosition == null || controller == null || !controller!.value.isInitialized) {
+      return;
+    }
+
+    final Size screenSize = MediaQuery.of(context).size;
+    final double x = _tapPosition!.dx / screenSize.width;
+    final double y = _tapPosition!.dy / screenSize.height;
+
+    final FocusMode focusMode = _calculateFocusMode(x, y);
+
+    controller!.setFocusMode(focusMode);
+  }
+
+  FocusMode _calculateFocusMode(double x, double y) {
+    return FocusMode.auto;
+  }
 }
 
 class MyBehavior extends ScrollBehavior {
